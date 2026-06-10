@@ -155,12 +155,20 @@ body > p {
   }
 
   section {
+    display: block;
     margin-top: -32px;
     gap: 18px;
+    overflow-x: visible;
+    padding: 0 18px 44px;
+    scroll-snap-type: none;
   }
 
   section div {
+    flex: unset;
+    width: auto;
+    margin-bottom: 18px;
     padding: 24px;
+    scroll-snap-align: unset;
   }
 
   body > p {
