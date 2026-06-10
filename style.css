@@ -66,15 +66,31 @@ header p {
 }
 
 section {
-  max-width: 1180px;
-  margin: -48px auto 0;
-  padding: 0 24px 48px;
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 100%;
+  margin: -48px 0 0;
+  padding: 0 16px 44px;
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+section::-webkit-scrollbar {
+  height: 10px;
+}
+
+section::-webkit-scrollbar-thumb {
+  background: rgba(15, 58, 123, 0.28);
+  border-radius: 999px;
+}
+
+section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.8);
 }
 
 section div {
+  flex: 0 0 min(320px, 84vw);
   background: var(--card);
   border-radius: 24px;
   padding: 28px 24px;
@@ -83,6 +99,7 @@ section div {
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
   position: relative;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 section div:hover {
