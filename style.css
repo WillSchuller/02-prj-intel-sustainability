@@ -34,9 +34,9 @@ img {
 }
 
 header {
-  background: linear-gradient(180deg, var(--hero) 0%, var(--hero-soft) 55%, var(--hero-deep) 100%);
+  background: linear-gradient(180deg, var(--hero) 0%, var(--hero-soft) 50%, rgba(242, 245, 248, 1) 100%);
   color: #ffffff;
-  padding: 64px 24px 68px;
+  padding: 72px 24px 88px;
   text-align: center;
 }
 
@@ -138,6 +138,23 @@ section p {
   margin: 0;
   color: var(--muted);
   font-size: 0.98rem;
+}
+
+section .summary,
+section .details {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: opacity 180ms ease, max-height 180ms ease, visibility 180ms ease;
+  margin-top: 16px;
+}
+
+section div:hover .summary,
+section div:hover .details {
+  opacity: 1;
+  max-height: 240px;
+  visibility: visible;
 }
 
 body > p {
