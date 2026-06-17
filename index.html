@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@
   </header>
 
   <!-- Timeline Cards Section -->
-  <section>
+  <section class="timeline-section">
 
     <!-- Card 1: 1968 -->
     <div>
@@ -159,25 +159,62 @@
     </div>
   </section>
 
+  <p class="timeline-hint">Scroll to view timeline | Hover over cards to learn more!</p>
+
   <!-- New Bootstrap three-column section -->
   <section class="container my-5 grid-section">
     <div class="row g-4">
       <div class="col-12 col-md-4">
-        <article class="p-4 border rounded h-100">
-          <h2>Eco Goals</h2>
-          <p>Learn how Intel targets energy, water, and waste reduction through each new generation of products.</p>
+        <article class="p-4 border rounded h-100 info-card">
+          <div class="info-head d-flex align-items-start gap-3">
+            <span class="info-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="#e8f1ff"/>
+                <circle cx="12" cy="12" r="4" stroke="#0b3a7b" stroke-width="1.5" fill="none"/>
+                <path d="M12 4v4M20 12h-4" stroke="#0b3a7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="flex-grow-1">
+              <h2>RISE Strategy</h2>
+              <button class="see-more" aria-expanded="false" type="button">Learn more</button>
+            </div>
+          </div>
+          <p class="subtext mt-3">Under its RISE strategy (Responsible, Inclusive, Sustainable, Enabling), Intel set ambitious 2030 goals — advancing industry-wide progress on climate action, water stewardship, and waste reduction.</p>
         </article>
       </div>
       <div class="col-12 col-md-4">
-        <article class="p-4 border rounded h-100">
-          <h2>Global Impact</h2>
-          <p>See how sustainability efforts reach manufacturing sites, supply chains, and communities around the world.</p>
+        <article class="p-4 border rounded h-100 info-card">
+          <div class="info-head d-flex align-items-start gap-3">
+            <span class="info-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="#e8f1ff"/>
+                <path d="M2 12h20" stroke="#0b3a7b" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M12 2a10 10 0 0 1 0 20M12 2a10 10 0 0 0 0 20" stroke="#0b3a7b" stroke-width="1" stroke-linecap="round" fill="none"/>
+              </svg>
+            </span>
+            <div class="flex-grow-1">
+              <h2>Commitment</h2>
+              <button class="see-more" aria-expanded="false" type="button">Learn more</button>
+            </div>
+          </div>
+          <p class="subtext mt-3">In 2022 Intel committed to achieving net‑zero greenhouse gas emissions from its operations (Scope 1 & 2) by 2040, supported by supplier agreements and industry partnerships.</p>
         </article>
       </div>
       <div class="col-12 col-md-4">
-        <article class="p-4 border rounded h-100">
-          <h2>Future Innovation</h2>
-          <p>Discover the next steps for Intel technology that supports a cleaner, more efficient future.</p>
+        <article class="p-4 border rounded h-100 info-card">
+          <div class="info-head d-flex align-items-start gap-3">
+            <span class="info-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3c-4 5-6 7.5-6 10a6 6 0 0 0 12 0c0-2.5-2-5-6-10z" fill="#e8f1ff"/>
+                <path d="M12 6c-1.5 2-3 4-3 6a3 3 0 0 0 6 0c0-2-1.5-4-3-6z" stroke="#0b3a7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+            <div class="flex-grow-1">
+              <h2>Water & Waste</h2>
+              <button class="see-more" aria-expanded="false" type="button">Learn more</button>
+            </div>
+          </div>
+          <p class="subtext mt-3">Intel conserves billions of liters of water annually and works with communities to restore watersheds. The company also focuses on reducing waste and improving recycling to strengthen circularity.</p>
         </article>
       </div>
     </div>
@@ -199,8 +236,60 @@
     </div>
   </section>
 
-  <footer class="page-footer">
-    <p>Scroll to view timeline | Hover over cards to learn more!</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Intel — Sustainability Through the Ages</p>
+      <p><a href="#">Privacy</a> • <a href="#">Terms</a> • <a href="#">Contact</a></p>
+    </div>
   </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Robust delegated handler: initialize subtexts and handle clicks via event delegation
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.info-card').forEach(function(card){
+        const sub = card.querySelector('.subtext');
+        if (!sub) return;
+        sub.style.height = '0px';
+        sub.style.opacity = '0';
+        sub.style.overflow = 'hidden';
+        sub.style.transition = 'height 300ms ease, opacity 200ms ease';
+        const btn = card.querySelector('.see-more');
+        if (btn) btn.setAttribute('aria-expanded','false');
+      });
+
+      document.addEventListener('click', function(e){
+        const btn = e.target.closest('.see-more');
+        if (!btn) return;
+        const card = btn.closest('.info-card');
+        if (!card) return;
+        const sub = card.querySelector('.subtext');
+        if (!sub) return;
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          if (!isExpanded) {
+          const full = sub.scrollHeight;
+          sub.style.height = full + 'px';
+          sub.style.opacity = '1';
+          card.classList.add('expanded');
+            btn.setAttribute('aria-expanded','true');
+            btn.textContent = 'Show less';
+        } else {
+          if (sub.style.height === 'auto') sub.style.height = sub.scrollHeight + 'px';
+          requestAnimationFrame(function(){ sub.style.height = '0px'; sub.style.opacity = '0'; });
+          card.classList.remove('expanded');
+          btn.setAttribute('aria-expanded','false');
+          btn.textContent = 'Learn more';
+        }
+
+        function onTransition(e){
+          if (e.propertyName !== 'height') return;
+          if (btn.getAttribute('aria-expanded') === 'true') {
+            sub.style.height = 'auto';
+          }
+          sub.removeEventListener('transitionend', onTransition);
+        }
+        sub.addEventListener('transitionend', onTransition);
+      });
+    });
+  </script>
 </body>
 </html>
