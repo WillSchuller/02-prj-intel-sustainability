@@ -76,6 +76,28 @@ section {
   -webkit-overflow-scrolling: touch;
 }
 
+.grid-section {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  overflow-x: visible;
+}
+
+.grid-section .row {
+  margin: 0;
+}
+
+.grid-section .col-12 {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .grid-section .col-md-4 {
+    width: 33.333333%;
+  }
+}
+
 section::-webkit-scrollbar {
   height: 10px;
 }
@@ -161,6 +183,74 @@ body > p {
   margin: 0 auto 44px;
   padding: 0 24px;
   max-width: 760px;
+  text-align: center;
+  color: #4f627f;
+  font-size: 0.95rem;
+}
+
+.newsletter-section {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  background: transparent;
+  text-align: center;
+  display: block;
+  padding: 0 16px 24px;
+  overflow: visible;
+}
+
+.newsletter-content {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+.newsletter-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.8rem, 2vw, 2.4rem);
+  color: var(--hero-deep);
+}
+
+.newsletter-section p {
+  margin: 0 auto 1.5rem;
+  max-width: 980px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.newsletter-section .form-control {
+  border-radius: 14px;
+  border: 1px solid rgba(15, 58, 123, 0.16);
+  box-shadow: none;
+  width: 100%;
+}
+
+.newsletter-section .btn-primary {
+  border-radius: 14px;
+  padding: 0.95rem 1.35rem;
+  min-width: 150px;
+}
+
+.newsletter-form {
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.newsletter-form input.form-control {
+  min-width: 400px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.newsletter-form button {
+  white-space: nowrap;
+}
+
+.page-footer {
+  padding: 16px 24px 24px;
   text-align: center;
   color: #4f627f;
   font-size: 0.95rem;
